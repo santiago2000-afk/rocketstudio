@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rocket.studio.rocketstudio.Appointment;
+import com.rocket.studio.rocketstudio.AppointmentRepository;
+import com.rocket.studio.rocketstudio.AppointmentRequestDto;
+
 @Service
 public class AppointmentService {
 
@@ -18,12 +22,10 @@ public class AppointmentService {
     private AppointmentRepository appointmentRepository;
 
     public void requestAppointment(AppointmentRequestDto requestDto, String username) {
-        // Lógica para crear una cita
         Appointment appointment = new Appointment();
         appointment.setDate(requestDto.getDate());
         appointment.setTime(requestDto.getTime());
         appointment.setPatientUsername(username);
-        // Más lógica de negocio...
 
         appointmentRepository.save(appointment);
     }
